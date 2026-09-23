@@ -25,28 +25,33 @@ const 兆 = (n) => (n / 1048576).toFixed(2) + " MB";
 
 const 来源 = 候选.find((p) => fs.existsSync(p));
 if (!来源) {
-  console.error("× 找不到模型：", 候选.join(" 或 "));
-  process.exit(1);
+  if (!fs.existsSync(目标)) {
+    console.error("× 找不到模型：", 候选.join(" 或 "), "，且 public/model/model.glb 也不存在");
+    process.exit(1);
+  }
+  console.warn(`! 模型/ 下没有源模型，沿用已压缩就位的 public/model/model.glb（${兆(fs.statSync(目标).size)}）`);
 }
 
 fs.mkdirSync(目标目录, { recursive: true });
 
-const 目标已是最新 = (() => {
-  if (!fs.existsSync(目标)) return false;
-  const a = fs.statSync(来源);
-  const b = fs.statSync(目标);
-  return a.size === b.size && a.mtimeMs <= b.mtimeMs;
-})();
+if (来源) {
+  const 目标已是最新 = (() => {
+    if (!fs.existsSync(目标)) return false;
+    const a = fs.statSync(来源);
+    const b = fs.statSync(目标);
+    return a.size === b.size && a.mtimeMs <= b.mtimeMs;
+  })();
 
-if (!目标已是最新) {
-  fs.copyFileSync(来源, 目标);
-  console.log(`✔ 模型同步：${path.basename(来源)} → public/model/model.glb（${兆(fs.statSync(目标).size)}）`);
-} else {
-  console.log(`· 模型已是最新（${兆(fs.statSync(目标).size)}），跳过同步`);
-}
+  if (!目标已是最新) {
+    fs.copyFileSync(来源, 目标);
+    console.log(`✔ 模型同步：${path.basename(来源)} → public/model/model.glb（${兆(fs.statSync(目标).size)}）`);
+  } else {
+    console.log(`· 模型已是最新（${兆(fs.statSync(目标).size)}），跳过同步`);
+  }
 
-if (来源.includes("武哲锋") && !候选[0].includes("武哲锋")) {
-  console.warn("! 用的是未优化的原始模型，先跑 npm run 模型:优化 会小很多");
+  if (来源.includes("武哲锋") && !候选[0].includes("武哲锋")) {
+    console.warn("! 用的是未优化的原始模型，先跑 npm run 模型:优化 会小很多");
+  }
 }
 
 /* ── 动作用的分割模型：确保 public/model/model-parts.glb 存在 ──

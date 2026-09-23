@@ -1,14 +1,14 @@
-# FengLai · 蜂来
+# YangLai · 阳来
 
-> The interactive livestream stage for the 2026 animated film *FengLai* — a full 3D host you can admire, poke, and prank: double-tap to like, drag props onto him, spam danmaku, and watch him rage.
+> The interactive livestream stage for the 2026 animated film *YangLai* — a full 3D host you can admire, poke, and prank: double-tap to like, drag props onto him, spam danmaku, and watch him rage.
 
-[![Stars](https://img.shields.io/github/stars/XuanRuiMu/FengLai?style=flat&logo=github)](https://github.com/XuanRuiMu/FengLai/stargazers)
-[![Forks](https://img.shields.io/github/forks/XuanRuiMu/FengLai?style=flat&logo=github)](https://github.com/XuanRuiMu/FengLai/forks)
-[![License](https://img.shields.io/github/license/XuanRuiMu/FengLai)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/XuanRuiMu/FengLai)](https://github.com/XuanRuiMu/FengLai/commits/main)
-[![Issues](https://img.shields.io/github/issues/XuanRuiMu/FengLai)](https://github.com/XuanRuiMu/FengLai/issues)
-[![Repo Size](https://img.shields.io/github/repo-size/XuanRuiMu/FengLai)](https://github.com/XuanRuiMu/FengLai)
-[![Live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://xuanruimu.github.io/FengLai/)
+[![Stars](https://img.shields.io/github/stars/XuanRuiMu/YangLai?style=flat&logo=github)](https://github.com/XuanRuiMu/YangLai/stargazers)
+[![Forks](https://img.shields.io/github/forks/XuanRuiMu/YangLai?style=flat&logo=github)](https://github.com/XuanRuiMu/YangLai/forks)
+[![License](https://img.shields.io/github/license/XuanRuiMu/YangLai)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/XuanRuiMu/YangLai)](https://github.com/XuanRuiMu/YangLai/commits/main)
+[![Issues](https://img.shields.io/github/issues/XuanRuiMu/YangLai)](https://github.com/XuanRuiMu/YangLai/issues)
+[![Repo Size](https://img.shields.io/github/repo-size/XuanRuiMu/YangLai)](https://github.com/XuanRuiMu/YangLai)
+[![Live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://xuanruimu.github.io/YangLai/)
 [![Powered by](https://img.shields.io/badge/powered%20by-Three.js-black)](https://threejs.org/)
 
 > 🌐 [中文](README.md) ｜ English
@@ -17,15 +17,15 @@
 
 ## Try it live
 
-🚀 **[Open the stage → https://xuanruimu.github.io/FengLai/](https://xuanruimu.github.io/FengLai/)**
+🚀 **[Open the stage → https://xuanruimu.github.io/YangLai/](https://xuanruimu.github.io/YangLai/)**
 
-![FengLai livestream](public/icons/%E6%88%AA%E5%9B%BE-%E5%AE%BD.png)
+![YangLai livestream](public/icons/%E6%88%AA%E5%9B%BE-%E5%AE%BD.png)
 
 ---
 
 ## What is this?
 
-*FengLai* is a 2026 animated film whose star is a bee streamer who loves to cause trouble. This project is its **promotional livestream room**: a 3D interactive prank stage running in your browser — the host stands right in front of you. Double-tap to like, drag props onto him, spam danmaku, fill his anger bar and watch the "rage splat".
+*YangLai* is a 2026 animated film whose star is a sun streamer who loves to cause trouble. This project is its **promotional livestream room**: a 3D interactive prank stage running in your browser — the host stands right in front of you. Double-tap to like, drag props onto him, spam danmaku, fill his anger bar and watch the "rage splat".
 
 Everything is **atmosphere performance**: popularity is simulated, the online count is derived, gifts cost nothing, and the model won't actually get hurt (probably).
 
@@ -40,11 +40,11 @@ Everything is **atmosphere performance**: popularity is simulated, the online co
 
 | Feature | Description |
 | --- | --- |
-| 🐝 3D host | Drag to rotate 360°, scroll to zoom, right-drag to pan; switch lighting / camera / auto-rotate |
+| 🌞 3D host | Drag to rotate 360°, scroll to zoom, right-drag to pan; switch lighting / camera / auto-rotate |
 | ❤️ Double-tap like | Double-tap anywhere on the model to pop like icons; chain taps trigger combos |
 | 🎁 Prank props | Drag from the dock onto the model: roses are "gifts", tomatoes & eggs are "throws" |
 | 😡 Rage splat | Max out the anger bar and the host throws a tantrum — right in your face |
-| 💬 Danmaku | Keywords like "蜂来", "下雨" (rain), "蹦迪" (disco), "反转" (flip) trigger easter eggs |
+| 💬 Danmaku | Keywords like "阳来", "下雨" (rain), "蹦迪" (disco), "反转" (flip) trigger easter eggs |
 | ☄️ Prop barrage | Rain down justice from above; 🧽 one-click clean of all splats |
 | 🍅 Tomato rain | Toss 10 tomatoes within 30 seconds to trigger a full-screen tomato rain |
 | 🕺 Disco mode | Lights + music + color strobes, the host dances along |
@@ -80,8 +80,8 @@ Everything is **atmosphere performance**: popularity is simulated, the online co
 ## Quick start
 
 ```bash
-git clone https://github.com/XuanRuiMu/FengLai.git
-cd FengLai
+git clone https://github.com/XuanRuiMu/YangLai.git
+cd YangLai
 
 npm install
 
@@ -95,14 +95,14 @@ npm run build
 npm run preview
 ```
 
-> Note: the 3D models are large; the repo keeps only the optimized production models in `public/model/`. The dev entry `index.html` sits at the repo root.
+> Note: models are compressed for Pages hosting (idle 2.6 MB / lite 1.3 MB / action 1.1 MB, ~5 MB total; rerun with `npm run 模型:压主页`). The repo keeps only the optimized production models in `public/model/`. The dev entry `index.html` sits at the repo root.
 
 ---
 
 ## Project structure
 
 ```text
-FengLai/
+YangLai/
 ├── index.html            # App entry (single page: danmaku layer, prop dock, controls…)
 ├── vite.config.js        # Vite config (three.js split, gzip, plugin chain)
 ├── package.json          # Scripts & deps (only runtime dep is three.js)
@@ -145,9 +145,9 @@ npm run audit:check # dependency security audit
 
 ## Links
 
-- 🐝 [Live stage](https://xuanruimu.github.io/FengLai/)
+- 🌞 [Live stage](https://xuanruimu.github.io/YangLai/)
 - 📖 [Changelog](CHANGELOG.md) ｜ [Privacy](public/privacy.html) ｜ [Terms](public/terms.html)
-- 🎬 The animated film *FengLai* — coming soon
+- 🎬 The animated film *YangLai* — coming soon
 
 ---
 

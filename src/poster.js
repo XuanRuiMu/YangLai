@@ -22,7 +22,7 @@ export async function 分享战报({ 画布, 状态, 成就, 昵称 }) {
   try {
     if (画布 && navigator.canShare) {
       const 文件 = await new Promise((成, 败) => 画布.toBlob((b) => (b ? 成(b) : 败(new Error("空图"))), "image/png"));
-      const 包 = new File([文件], "蜂来-战报.png", { type: "image/png" });
+      const 包 = new File([文件], "阳来-战报.png", { type: "image/png" });
       if (navigator.canShare({ files: [包] })) {
         await navigator.share({ files: [包], title: 配置.分享.标题, text: 文本 });
         发布("提示", { 文本: 配置.分享.分享成功 });

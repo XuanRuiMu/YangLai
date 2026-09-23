@@ -87,7 +87,7 @@ export class 舞台 {
       画布.addEventListener("webglcontextlost", (事件) => {
         事件.preventDefault();
         try {
-          画布.dispatchEvent(new CustomEvent("蜂来上下文丢失"));
+          画布.dispatchEvent(new CustomEvent("阳来上下文丢失"));
         } catch {
         }
         if (this.上下文丢过) return;

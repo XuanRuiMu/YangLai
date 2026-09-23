@@ -1,9 +1,9 @@
 {
-  "name": "feng-lai-stage",
+  "name": "yang-lai-stage",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "2026年动画电影《蜂来》宣传直播间",
+  "description": "2026年动画电影《阳来》宣传直播间",
   "scripts": {
     "predev": "node tools/sync-model.cjs",
     "dev": "vite --host",
@@ -18,6 +18,7 @@
     "模型:轻量": "node tools/make_lite.cjs",
     "模型:优化主": "node tools/optimize_main.cjs",
     "模型:同步": "node tools/sync-model.cjs",
+    "模型:压主页": "node tools/compress_pages.cjs",
     "语音:烘焙": "node tools/bake_voice.cjs",
     "验证": "node tools/verify.cjs",
     "audit:check": "npm audit --audit-level=high"

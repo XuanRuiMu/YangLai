@@ -276,7 +276,7 @@ function 起服务() {
     记("动作模型 model-parts.glb 已打包", 在, `动作模型 ${兆}`);
   }
 
-  /* 1.7 动作系统就绪 + 双模型切换（YH-063：走 #验收探针 公开数据集 + 真实按钮点击，不碰 window.蜂来内部对象） */
+  /* 1.7 动作系统就绪 + 双模型切换（YH-063：走 #验收探针 公开数据集 + 真实按钮点击，不碰 window.阳来内部对象） */
   {
     // 取名卡会盖住动作按钮：先完成取名（跳过→改名），再做动作断言
     await 页.click("#nick-skip").catch(() => {});
@@ -317,18 +317,18 @@ function 起服务() {
     记("播放「跑」切换到分割模型", 跑后.在动作 && 跑后.当前 === "跑",
       JSON.stringify(跑后));
 
-    // 点「蜂来·分离」→ 分离因子上升
+    // 点「阳来·分离」→ 分离因子上升
     // 无头 swiftshader 帧率极低（约 3fps），固定 sleep 会错过收敛点；
     // 改为轮询等到分离因子真正张开（阈值 0.5，最长 12s）。
-    await 页.$eval('.act-chip[data-act="蜂来"]', (钮) => 钮.click());
+    await 页.$eval('.act-chip[data-act="阳来"]', (钮) => 钮.click());
     const 分离收敛 = await 页
       .waitForFunction(() => Number(document.querySelector("#验收探针")?.dataset.分离因子 || "0") > 0.5, null, { timeout: 12000 })
       .then(() => true)
       .catch(() => false);
     const 分离 = await 页.evaluate(() => Number(document.querySelector("#验收探针")?.dataset.分离因子 || "0"));
-    await 页.screenshot({ path: path.join(截图目录, "1b-蜂来分离.png") });
+    await 页.screenshot({ path: path.join(截图目录, "1b-阳来分离.png") });
     const 分离报错 = 报错.length - 报错前;
-    记("蜂来·分离生效且分离因子上升", 分离收敛 && 分离 > 0.5 && 分离报错 === 0, `分离因子=${分离.toFixed(2)}, 新增报错=${分离报错}`);
+    记("阳来·分离生效且分离因子上升", 分离收敛 && 分离 > 0.5 && 分离报错 === 0, `分离因子=${分离.toFixed(2)}, 新增报错=${分离报错}`);
 
     // 点「待机」→ 回到着色模型
     await 页.$eval('.act-chip[data-act="待机"]', (钮) => 钮.click());
@@ -343,10 +343,10 @@ function 起服务() {
   }
 
   /* 1.8 双模型材质与朝向：走公开渲染结果断言——截图落盘 + DOM 画布非空。
-   * YH-063：禁遍历 window.蜂来 内部网格/包围盒；材质与几何一致性由构建产物与渲染输出保证，
+   * YH-063：禁遍历 window.阳来 内部网格/包围盒；材质与几何一致性由构建产物与渲染输出保证，
    * 此处断言双模型切换均有真实渲染输出（截图字节显著 + 探针状态机正确）。 */
   {
-    // 先等分离因子回落到 ~0：上面「蜂来·分离」把部件炸开过，无头慢速下待机后仍需若干帧才能收敛，
+    // 先等分离因子回落到 ~0：上面「阳来·分离」把部件炸开过，无头慢速下待机后仍需若干帧才能收敛，
     // 不等人就量，会把"分离动画未结束"的膨胀包围盒误判成模型身高异常。
     await 页
       .waitForFunction(() => Number(document.querySelector("#验收探针")?.dataset.分离因子 || "0") < 0.05, null, { timeout: 15000 })
@@ -396,7 +396,7 @@ function 起服务() {
   const 新昵称 = await 文本(页, "#nick-btn");
   记("顶栏改名生效", 新昵称 === "测试员老张", 新昵称);
 
-  const 存档 = await 页.evaluate(() => localStorage.getItem("蜂来_身份_v2") || localStorage.getItem("蜂来_昵称_v1") || "");
+  const 存档 = await 页.evaluate(() => localStorage.getItem("阳来_身份_v2") || localStorage.getItem("阳来_昵称_v1") || "");
   记("昵称写入 localStorage", 存档.includes("测试员老张"), 存档.slice(0, 60));
 
   /* 4. 双击点赞 */
@@ -559,29 +559,29 @@ function 起服务() {
 
   /* 12. 弹幕口令彩蛋 */
   await 页.waitForTimeout(900);
-  await 页.fill("#danmu-input", "蜂来");
+  await 页.fill("#danmu-input", "阳来");
   await 页.press("#danmu-input", "Enter");
-  const 口令到了 = await 等提示(页, "蜂真的来了", 15000);
+  const 口令到了 = await 等提示(页, "阳真的来了", 15000);
   const 口令提示 = (await 提示文本(页)).join("|");
-  记("弹幕口令「蜂来」触发蜜蜂雨", 口令到了, 口令提示.slice(0, 100) || "（15 秒内未出现）");
+  记("弹幕口令「阳来」触发太阳雨", 口令到了, 口令提示.slice(0, 100) || "（15 秒内未出现）");
 
-  /* 13. 连点 logo 触发蜜蜂雨
+  /* 13. 连点 logo 触发太阳雨
    * 无头 swiftshader 下主线程被软件渲染拖住，playwright 的 click 间隔会被拉大到 >1.3s，
    * 点击窗口过滤（窗口=2600ms）把连点数压到 ~2，永远到不了阈值 7。
-   * 同步连点 7 下：各次 performance.now() 几乎相同，全部落在窗口内，必然触发蜜蜂雨。
-   * 以 #验收探针 蜜蜂雨剩余 > 0 作为触发信号（公开数据集，不碰内部对象）。 */
+   * 同步连点 7 下：各次 performance.now() 几乎相同，全部落在窗口内，必然触发太阳雨。
+   * 以 #验收探针 太阳雨剩余 > 0 作为触发信号（公开数据集，不碰内部对象）。 */
   await 页.waitForTimeout(900);
   await 页.evaluate(() => {
-    const 标 = document.querySelector("#brand-bee");
+    const 标 = document.querySelector("#brand-sun");
     if (!标) return;
     for (let i = 0; i < 7; i++) 标.click();
   });
   const 连点到了 = await 页
-    .waitForFunction(() => Number(document.querySelector("#验收探针")?.dataset.蜜蜂雨剩余 || "0") > 0, null, { timeout: 8000 })
+    .waitForFunction(() => Number(document.querySelector("#验收探针")?.dataset.太阳雨剩余 || "0") > 0, null, { timeout: 8000 })
     .then(() => true)
     .catch(() => false);
   const 连点提示 = (await 提示文本(页)).join("|");
-  记("连点 7 下 logo 触发蜜蜂雨", 连点到了, 连点提示.slice(0, 100) || "（未触发）");
+  记("连点 7 下 logo 触发太阳雨", 连点到了, 连点提示.slice(0, 100) || "（未触发）");
 
   /* 14. 蹦迪模式 */
   await 页.click('.ctrl[data-act="disco"]');
@@ -1133,7 +1133,7 @@ function 起服务() {
         const CSP = document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content || "";
         return {
           有CSP: CSP.includes("default-src") && CSP.includes("object-src 'none'") && CSP.includes("wasm-unsafe-eval"),
-          调试关闭: typeof window.蜂来 === "undefined",
+          调试关闭: typeof window.阳来 === "undefined",
           有探针: !!document.querySelector("#验收探针"),
           无最佳: !(document.title || "").includes("最佳"),
           在线口径: (document.querySelector("#online-count")?.title || "").includes("非真实在线") || (document.querySelector("#online-count")?.parentElement?.textContent || "").includes("非真实在线"),
@@ -1191,7 +1191,7 @@ function 起服务() {
         演出声明段: 页文本.includes("无实际支付"),
         无打赏付费: !页文本.includes("打赏") && !页文本.includes("付费") && !页文本.includes("破费") && !页文本.includes("老板大气") && !页文本.includes("最贵"),
         无跨端夸大: !页文本.includes("隔壁直播间正在同步围观"),
-        关键词: (document.querySelector('meta[name="keywords"]')?.content || "").includes("蜂来"),
+        关键词: (document.querySelector('meta[name="keywords"]')?.content || "").includes("阳来"),
         标语: (document.querySelector('meta[name="description"]')?.content || "").includes("开整"),
         主题一致: (document.querySelector('meta[name="theme-color"]')?.content || "") === "#120d18",
       };

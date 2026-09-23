@@ -6,7 +6,7 @@
 const path = require("path");
 const sharp = require("sharp");
 
-const 蜜蜂图标 = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+const 太阳图标 = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#2a1030"/>
@@ -32,17 +32,17 @@ const 蜜蜂图标 = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 5
   <path d="M232 396c14 16 34 16 48 0" stroke="#2a1a00" stroke-width="14" fill="none" stroke-linecap="round"/>
 </svg>`;
 
-const 宽截图 = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="1280" height="720" fill="#120d18"/><text x="640" y="330" font-size="120" text-anchor="middle">🐝</text><text x="640" y="480" font-size="64" fill="#ffc53d" text-anchor="middle">蜂来直播间</text><text x="640" y="560" font-size="36" fill="#a99cbd" text-anchor="middle">双击点赞 · 拖拽道具 · 弹幕刷屏</text></svg>`;
-const 窄截图 = `<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844"><rect width="390" height="844" fill="#120d18"/><text x="195" y="360" font-size="120" text-anchor="middle">🐝</text><text x="195" y="500" font-size="56" fill="#ffc53d" text-anchor="middle">蜂来直播间</text><text x="195" y="580" font-size="30" fill="#a99cbd" text-anchor="middle">双击点赞 · 拖拽道具</text></svg>`;
+const 宽截图 = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="1280" height="720" fill="#120d18"/><text x="640" y="330" font-size="120" text-anchor="middle">🌞</text><text x="640" y="480" font-size="64" fill="#ffc53d" text-anchor="middle">阳来直播间</text><text x="640" y="560" font-size="36" fill="#a99cbd" text-anchor="middle">双击点赞 · 拖拽道具 · 弹幕刷屏</text></svg>`;
+const 窄截图 = `<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844"><rect width="390" height="844" fill="#120d18"/><text x="195" y="360" font-size="120" text-anchor="middle">🌞</text><text x="195" y="500" font-size="56" fill="#ffc53d" text-anchor="middle">阳来直播间</text><text x="195" y="580" font-size="30" fill="#a99cbd" text-anchor="middle">双击点赞 · 拖拽道具</text></svg>`;
 
 (async () => {
   const 目录 = path.join(__dirname, "..", "public", "icons");
   for (const 边长 of [152, 167, 180, 192, 512]) {
     const 出 = path.join(目录, `icon-${边长}.png`);
-    await sharp(Buffer.from(蜜蜂图标)).resize(边长, 边长).png({ compressionLevel: 9 }).toFile(出);
+    await sharp(Buffer.from(太阳图标)).resize(边长, 边长).png({ compressionLevel: 9 }).toFile(出);
     console.log("已生成", 出);
   }
-  const 遮罩 = await sharp(Buffer.from(蜜蜂图标))
+  const 遮罩 = await sharp(Buffer.from(太阳图标))
     .resize(410, 410)
     .extend({ top: 51, bottom: 51, left: 51, right: 51, background: "#160f20" })
     .png({ compressionLevel: 9 })

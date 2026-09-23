@@ -2,13 +2,13 @@
   "主": "model/model.glb",
   "低": "model/model-lite.glb",
   "哈希": {
-    "model/model.glb": "be76ca2a02232f87",
-    "model/model-parts.glb": "4127df10fbba88e0",
-    "model/model-lite.glb": "e0bae3007e9edc1c"
+    "model/model.glb": "4a887f4f859d3e47",
+    "model/model-parts.glb": "8e821f5dd645025c",
+    "model/model-lite.glb": "4a809433d189d3af"
   },
   "体积": {
-    "model/model.glb": 9895736,
-    "model/model-parts.glb": 4790032,
-    "model/model-lite.glb": 4653676
+    "model/model.glb": 2752768,
+    "model/model-parts.glb": 1185492,
+    "model/model-lite.glb": 1375164
   }
 }

@@ -51,7 +51,7 @@ export class 界面 {
       标签区: 取("#tab-count-wrap"),
       昵称钮: 取("#nick-btn"),
       关注钮: 取("#follow-btn"),
-      蜜蜂标: 取("#brand-bee"),
+      太阳标: 取("#brand-sun"),
       停留: 取("#stay-time"),
       称号: 取("#title-badge"),
       好感值: 取("#favor-value"),
@@ -115,7 +115,7 @@ export class 界面 {
     this.台词冷却 = 0;
     this.气泡剩余 = 0;
     this.在线基数 = 配置.直播间.观看基数;
-    this.蜜蜂连点 = [];
+    this.太阳连点 = [];
     this.上次人气 = null;
     this.上次旋转态 = null;
     this.巡游中 = false;
@@ -137,7 +137,7 @@ export class 界面 {
     this.绑定弹幕输入();
     this.绑定帮助();
     this.绑定取名();
-    this.绑定蜜蜂();
+    this.绑定太阳();
     this.绑定成就行();
     this.订阅事件();
     this.刷新人气开关();
@@ -184,10 +184,10 @@ export class 界面 {
     元素.classList.add("可拖动");
 
     const 标识 = 元素.id || Math.random().toString(36).slice(2, 8);
-    const 键名 = `${配置.面板?.偏移键前缀 || "蜂来_面板偏移_v2_"}${标识}`;
-    const 旧键名 = `${配置.面板?.旧偏移键前缀 || "蜂来_面板偏移_"}${标识}`;
+    const 键名 = `${配置.面板?.偏移键前缀 || "阳来_面板偏移_v2_"}${标识}`;
+    const 旧键名 = `${配置.面板?.旧偏移键前缀 || "阳来_面板偏移_"}${标识}`;
     try {
-      localStorage.removeItem(`蜂来_面板位置_${标识}`);
+      localStorage.removeItem(`阳来_面板位置_${标识}`);
       const 旧存 = localStorage.getItem(旧键名);
       if (旧存 && !localStorage.getItem(键名)) {
         try {
@@ -1012,12 +1012,12 @@ export class 界面 {
           画布.height = 图.height;
           const 笔 = 画布.getContext("2d");
           笔.drawImage(图, 0, 0);
-          const 口令 = `蜂来现场·${new Date().toISOString().slice(0, 10)}`;
+          const 口令 = `阳来现场·${new Date().toISOString().slice(0, 10)}`;
           const 文本 = 配置.分享.截图文本模板.replace("{口令}", 口令);
           try {
             if (画布 && navigator.canShare) {
               const 文件 = await new Promise((成, 败) => 画布.toBlob((b) => (b ? 成(b) : 败(new Error("空图"))), "image/png"));
-              const 包 = new File([文件], "蜂来-现场.png", { type: "image/png" });
+              const 包 = new File([文件], "阳来-现场.png", { type: "image/png" });
               if (navigator.canShare({ files: [包] })) {
                 await navigator.share({ files: [包], title: 配置.分享.标题, text: 文本 });
                 this.提示(配置.分享.截图已分享);
@@ -1042,7 +1042,7 @@ export class 界面 {
           }
           const 链接 = document.createElement("a");
           链接.href = 画布.toDataURL("image/png");
-          链接.download = `蜂来-现场-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "")}.png`;
+          链接.download = `阳来-现场-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "")}.png`;
           链接.click();
           this.提示(配置.文案.截图成功);
           发布("截图");
@@ -1128,7 +1128,7 @@ export class 界面 {
         const 新手题 = 取("#新手引导标题");
         if (新手题 && !取("#新手引导")?.classList.contains("hidden")) 新手题.textContent = this.文("新手标题");
         const 帮助题 = 取("#help-title");
-        if (帮助题) 帮助题.textContent = `🐝 蜂来整蛊舞台 · ${this.文("帮助说明")}`;
+        if (帮助题) 帮助题.textContent = `🌞 阳来整蛊舞台 · ${this.文("帮助说明")}`;
       } catch {
       }
       try {
@@ -1362,7 +1362,7 @@ export class 界面 {
     }
     try {
       const 画布 = this.元素.画布;
-      画布?.addEventListener("蜂来上下文丢失", () => {
+      画布?.addEventListener("阳来上下文丢失", () => {
         this.提示(配置.渲染.上下文丢失);
       });
     } catch {
@@ -1407,7 +1407,7 @@ export class 界面 {
       const 版本 = document.createElement("p");
       版本.className = "help-tip";
       版本.id = "help-版本行";
-      版本.textContent = `版本 ${typeof __蜂来版本__ !== "undefined" ? __蜂来版本__ : "1.0.0"} · ${配置.更新日志.页内链文案 || ""} ${配置.合规.第三方}`;
+      版本.textContent = `版本 ${typeof __阳来版本__ !== "undefined" ? __阳来版本__ : "1.0.0"} · ${配置.更新日志.页内链文案 || ""} ${配置.合规.第三方}`;
       const 日志链 = document.createElement("a");
       日志链.href = 配置.更新日志.文件;
       日志链.textContent = 配置.更新日志.页内链文案;
@@ -1633,22 +1633,22 @@ export class 界面 {
     钮.title = this.已取名() ? `${this.身份.昵称}（点击改名）` : "点击取名";
   }
 
-  /* ── 蜜蜂彩蛋：连点 logo ─────────────── */
+  /* ── 太阳彩蛋：连点 logo ─────────────── */
 
-  绑定蜜蜂() {
-    const 标 = this.元素.蜜蜂标;
+  绑定太阳() {
+    const 标 = this.元素.太阳标;
     if (!标) return;
     标.style.cursor = "pointer";
     标.addEventListener("click", () => {
       声音.解锁();
       const 现在 = performance.now();
-      const 窗口 = 配置.蜜蜂雨.窗口毫秒;
-      this.蜜蜂连点 = this.蜜蜂连点.filter((t) => 现在 - t <= 窗口);
-      this.蜜蜂连点.push(现在);
-      标.style.transform = `scale(${1 + Math.min(0.5, this.蜜蜂连点.length * 0.06)})`;
-      if (this.蜜蜂连点.length >= 配置.蜜蜂雨.连点次数) {
-        this.蜜蜂连点 = [];
-        发布("蜜蜂雨");
+      const 窗口 = 配置.太阳雨.窗口毫秒;
+      this.太阳连点 = this.太阳连点.filter((t) => 现在 - t <= 窗口);
+      this.太阳连点.push(现在);
+      标.style.transform = `scale(${1 + Math.min(0.5, this.太阳连点.length * 0.06)})`;
+      if (this.太阳连点.length >= 配置.太阳雨.连点次数) {
+        this.太阳连点 = [];
+        发布("太阳雨");
       }
     });
   }

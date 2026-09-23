@@ -7,7 +7,7 @@ const 开可视化 = process.env.产物分析 === "1";
 export default defineConfig({
   base: "./",
   define: {
-    __蜂来版本__: JSON.stringify(process.env.npm_package_version || "1.0.0"),
+    __阳来版本__: JSON.stringify(process.env.npm_package_version || "1.0.0"),
   },
   server: { host: true, port: 3080 },
   preview: { host: true, port: 4173 },

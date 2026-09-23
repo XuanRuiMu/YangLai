@@ -1,4 +1,4 @@
-/* 蜂来 · Service Worker
+/* 阳来 · Service Worker
  * 策略：
  *  - 导航请求：网络优先，失败才回退缓存（保证重新部署后能拿到新版）
  *  - 其它同源 GET：先给缓存再后台更新（stale-while-revalidate）
@@ -6,9 +6,9 @@
  *  - 音频片段走独立缓存并设数量+体积上限，超限按写入顺序淘汰最旧
  * 构建脚本 tools/inject_sw.cjs 会把下方的 __壳资源__ 占位替换为 dist 产物清单（含 hashed assets）。
  */
-const 版本 = "蜂来-壳-v2";
+const 版本 = "阳来-壳-v2";
 const 壳资源 = __壳资源__;
-const 音频缓存 = "蜂来-音频-v1";
+const 音频缓存 = "阳来-音频-v1";
 const 音频最多条数 = __音频最多条数__;
 const 音频最多字节 = __音频最多字节__;
 

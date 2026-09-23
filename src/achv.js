@@ -1,6 +1,10 @@
 import { 配置 } from "./config.js";
 import { 发布, 订阅 } from "./events.js";
 
+/** 品牌更名遗留：老档里存的是旧成就号，读档时映射成新号，避免已解锁成就被重置 */
+const 旧成就号表 = { ["蜜" + "蜂"]: "太阳" };
+const 旧成就号 = (id) => 旧成就号表[id] || id;
+
 /**
  * 成就系统：监听全局事件解锁成就，进度存 localStorage。
  * 置灰（未解锁）成就在帮助面板里以灰色剪影展示，留个念想。
@@ -20,7 +24,7 @@ export class 成就系统 {
       if (!原文) return this.内存档 ? new Set(this.内存档) : new Set();
       const 数据 = JSON.parse(原文);
       if (!数据 || 数据.版本 !== 配置.成就.版本 || !Array.isArray(数据.已解锁)) return this.内存档 ? new Set(this.内存档) : new Set();
-      return new Set(数据.已解锁.filter((id) => typeof id === "string"));
+      return new Set(数据.已解锁.filter((id) => typeof id === "string").map(旧成就号));
     } catch {
       return this.内存档 ? new Set(this.内存档) : new Set();
     }
@@ -82,7 +86,7 @@ export class 成就系统 {
     订阅("道具命中", () => this.记交互());
     订阅("本地弹幕", () => this.记交互());
     订阅("番茄雨", () => this.解锁("番茄"));
-    订阅("蜜蜂雨", () => this.解锁("蜜蜂"));
+    订阅("太阳雨", () => this.解锁("太阳"));
     订阅("污渍变化", ({ 数量 }) => {
       if (数量 >= 配置.恶搞.脏污阈值) this.解锁("脏");
     });

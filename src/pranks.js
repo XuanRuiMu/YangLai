@@ -63,7 +63,7 @@ export class 恶搞系统 {
     } catch {
     }
     try {
-      const 未成年 = localStorage.getItem(配置.未成年?.存储键 || "蜂来_未成年_v1") === "1";
+      const 未成年 = localStorage.getItem(配置.未成年?.存储键 || "阳来_未成年_v1") === "1";
       if (未成年) {
         发布("提示", { 文本: 配置.未成年.蹦迪拦截 });
         return false;
@@ -138,8 +138,8 @@ export class 恶搞系统 {
 
   执行口令(动作) {
     switch (动作) {
-      case "蜜蜂雨":
-        this.特效.开始蜜蜂雨();
+      case "太阳雨":
+        this.特效.开始太阳雨();
         break;
       case "番茄雨":
         this.特效.开始番茄雨();

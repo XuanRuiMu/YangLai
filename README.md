@@ -1,14 +1,14 @@
-# 蜂来 · FengLai
+# 阳来 · YangLai
 
-> 2026 年动画电影《蜂来》宣传直播间 —— 全方面 3D 展示主播，双击点赞、拖拽道具整蛊、弹幕刷屏的无厘头互动舞台。
+> 2026 年动画电影《阳来》宣传直播间 —— 全方面 3D 展示主播，双击点赞、拖拽道具整蛊、弹幕刷屏的无厘头互动舞台。
 
-[![Stars](https://img.shields.io/github/stars/XuanRuiMu/FengLai?style=flat&logo=github)](https://github.com/XuanRuiMu/FengLai/stargazers)
-[![Forks](https://img.shields.io/github/forks/XuanRuiMu/FengLai?style=flat&logo=github)](https://github.com/XuanRuiMu/FengLai/forks)
-[![License](https://img.shields.io/github/license/XuanRuiMu/FengLai)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/XuanRuiMu/FengLai)](https://github.com/XuanRuiMu/FengLai/commits/main)
-[![Issues](https://img.shields.io/github/issues/XuanRuiMu/FengLai)](https://github.com/XuanRuiMu/FengLai/issues)
-[![Repo Size](https://img.shields.io/github/repo-size/XuanRuiMu/FengLai)](https://github.com/XuanRuiMu/FengLai)
-[![Live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://xuanruimu.github.io/FengLai/)
+[![Stars](https://img.shields.io/github/stars/XuanRuiMu/YangLai?style=flat&logo=github)](https://github.com/XuanRuiMu/YangLai/stargazers)
+[![Forks](https://img.shields.io/github/forks/XuanRuiMu/YangLai?style=flat&logo=github)](https://github.com/XuanRuiMu/YangLai/forks)
+[![License](https://img.shields.io/github/license/XuanRuiMu/YangLai)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/XuanRuiMu/YangLai)](https://github.com/XuanRuiMu/YangLai/commits/main)
+[![Issues](https://img.shields.io/github/issues/XuanRuiMu/YangLai)](https://github.com/XuanRuiMu/YangLai/issues)
+[![Repo Size](https://img.shields.io/github/repo-size/XuanRuiMu/YangLai)](https://github.com/XuanRuiMu/YangLai)
+[![Live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://xuanruimu.github.io/YangLai/)
 [![Powered by](https://img.shields.io/badge/powered%20by-Three.js-black)](https://threejs.org/)
 
 > 🌐 简体中文 ｜ [English](README_EN.md)
@@ -17,15 +17,15 @@
 
 ## 在线体验
 
-🚀 **[立即开整 → https://xuanruimu.github.io/FengLai/](https://xuanruimu.github.io/FengLai/)**
+🚀 **[立即开整 → https://xuanruimu.github.io/YangLai/](https://xuanruimu.github.io/YangLai/)**
 
-![蜂来直播间](public/icons/%E6%88%AA%E5%9B%BE-%E5%AE%BD.png)
+![阳来直播间](public/icons/%E6%88%AA%E5%9B%BE-%E5%AE%BD.png)
 
 ---
 
 ## 这是什么？
 
-《蜂来》是一部 2026 年的动画电影，我们的主角是一只爱折腾的蜜蜂主播。这个项目是它的 **宣传直播间**：一个跑在浏览器里的 3D 互动整蛊舞台——主播就站在你面前，双击点赞、拖道具砸他、发弹幕刷屏、把他惹毛看"暴怒糊屏"。
+《阳来》是一部 2026 年的动画电影，我们的主角是一只爱折腾的太阳主播。这个项目是它的 **宣传直播间**：一个跑在浏览器里的 3D 互动整蛊舞台——主播就站在你面前，双击点赞、拖道具砸他、发弹幕刷屏、把他惹毛看"暴怒糊屏"。
 
 所有东西都是**气氛演出**：人气值是假的、在线人数是换算的、送礼不花钱、模型本体不会受伤（大概）。
 
@@ -40,11 +40,11 @@
 
 | 玩法 | 说明 |
 | --- | --- |
-| 🐝 3D 主播 | 左键 360° 旋转、滚轮缩放、右键平移；可切换灯光 / 机位 / 自动旋转 |
+| 🌞 3D 主播 | 左键 360° 旋转、滚轮缩放、右键平移；可切换灯光 / 机位 / 自动旋转 |
 | ❤️ 双击点赞 | 双击模型任意位置，点赞图标飘起来，连续双击触发连击 |
 | 🎁 整蛊道具 | 从道具栏按住拖到模型身上：玫瑰是「献上」，西红柿鸡蛋是「砸过去」 |
 | 😡 暴怒糊屏 | 把愤怒值刷满，主播当场发飙，然后糊你一脸 |
-| 💬 弹幕刷屏 | 发「蜂来」「下雨」「蹦迪」「反转」这类口令有彩蛋 |
+| 💬 弹幕刷屏 | 发「阳来」「下雨」「蹦迪」「反转」这类口令有彩蛋 |
 | ☄️ 道具轰炸 | 天降正义；🧽 一键清洗所有污渍 |
 | 🍅 番茄雨 | 30 秒内扔够 10 个西红柿，全场天降西红柿 |
 | 🕺 蹦迪模式 | 灯光 + 音乐 + 彩色频闪，主播跟着摇 |
@@ -81,8 +81,8 @@
 
 ```bash
 # 克隆
-git clone https://github.com/XuanRuiMu/FengLai.git
-cd FengLai
+git clone https://github.com/XuanRuiMu/YangLai.git
+cd YangLai
 
 # 安装依赖
 npm install
@@ -97,14 +97,14 @@ npm run build
 npm run preview
 ```
 
-> 注意：3D 模型体积较大（含原始 `.glb`），仓库中仅保留生产用优化模型到 `public/model/`；开发入口 `index.html` 直接位于根目录。
+> 注意：3D 模型已按 Pages 承载档压缩（待机 2.6 MB / lite 1.3 MB / 动作 1.1 MB，合计约 5 MB，跑 `npm run 模型:压主页` 可重跑）；仓库中仅保留生产用优化模型到 `public/model/`；开发入口 `index.html` 直接位于根目录。
 
 ---
 
 ## 项目结构
 
 ```text
-FengLai/
+YangLai/
 ├── index.html              # 应用入口（单页，弹幕层/道具栏/控制栏等全部 DOM）
 ├── vite.config.js          # Vite 配置（three.js 分包、gzip、构建插件链）
 ├── package.json            # 脚本与依赖（唯一运行时依赖 three.js）
@@ -147,9 +147,9 @@ npm run audit:check # 依赖安全审计
 
 ## 相关链接
 
-- 🐝 [在线直播间](https://xuanruimu.github.io/FengLai/)
+- 🌞 [在线直播间](https://xuanruimu.github.io/YangLai/)
 - 📖 [更新日志](CHANGELOG.md) ｜ [隐私说明](public/privacy.html) ｜ [服务条款](public/terms.html)
-- 🎬 动画电影《蜂来》—— 敬请期待
+- 🎬 动画电影《阳来》—— 敬请期待
 
 ---
 

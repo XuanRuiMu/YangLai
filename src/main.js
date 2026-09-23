@@ -22,8 +22,10 @@ import { 绑定埋点 } from "./埋点.js";
 import { 拉取内容 } from "./内容.js";
 import { 绑定全局错误, 应用主题, 当前主题, 当前省电 } from "./治理.js";
 import { 订阅, 发布 } from "./events.js";
+import { 迁移旧存储键 } from "./存储迁移.js";
 
 async function 启动() {
+  迁移旧存储键();
   标注舞台语义();
   try {
     document.documentElement.style.setProperty("--字体栈", 配置.字体.栈);
@@ -111,7 +113,7 @@ async function 启动() {
   /* ── 彩蛋演出 ───────────────────────── */
 
   订阅("番茄雨", () => 特效.开始番茄雨());
-  订阅("蜜蜂雨", () => 特效.开始蜜蜂雨());
+  订阅("太阳雨", () => 特效.开始太阳雨());
   订阅("香蕉滑倒", () => {
     特效.滑倒();
     模型.挨打(new THREE.Vector3(0, 1, 0), 1.2);
@@ -265,7 +267,7 @@ async function 启动() {
       探针.dataset.就绪 = 就绪 ? "1" : "0";      探针.dataset.在动作 = 模型.在动作 ? "1" : "0";
       探针.dataset.当前动作 = 模型.动作系统?.当前动作 || "";
       探针.dataset.分离因子 = String(模型.动作系统?.分离因子 ?? 0);
-      探针.dataset.蜜蜂雨剩余 = String(特效.蜜蜂雨剩余 ?? 0);
+      探针.dataset.太阳雨剩余 = String(特效.太阳雨剩余 ?? 0);
       探针.dataset.地面香蕉皮 = String(道具.地面香蕉皮?.length ?? 0);
       探针.dataset.点赞数 = String(状态.点赞数 ?? 0);
       探针.dataset.埋点 = JSON.stringify(埋点快照());
@@ -282,7 +284,7 @@ async function 启动() {
       } catch {
       }
       try {
-        探针.dataset.版本 = typeof __蜂来版本__ !== "undefined" ? __蜂来版本__ : "1.0.0";
+        探针.dataset.版本 = typeof __阳来版本__ !== "undefined" ? __阳来版本__ : "1.0.0";
       } catch {
         探针.dataset.版本 = "1.0.0";
       }
@@ -292,7 +294,7 @@ async function 启动() {
   setInterval(写探针, 500);
   写探针();
 
-  // 调试关闭：线上 ?调试 不再暴露 window.蜂来内部对象（YH-063 根因治理）。
+  // 调试关闭：线上 ?调试 不再暴露 window.阳来内部对象（YH-063 根因治理）。
 }
 
 启动().catch((错误) => {

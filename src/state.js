@@ -69,7 +69,7 @@ export class 状态 {
     const 文本 = JSON.stringify({ 战绩: 数据, 时间: Date.now() });
     const 链接 = document.createElement("a");
     链接.href = URL.createObjectURL(new Blob([文本], { type: "application/json" }));
-    链接.download = `蜂来-存档-${new Date().toISOString().slice(0, 10)}.json`;
+    链接.download = `阳来-存档-${new Date().toISOString().slice(0, 10)}.json`;
     链接.click();
     setTimeout(() => URL.revokeObjectURL(链接.href), 4000);
     return true;
