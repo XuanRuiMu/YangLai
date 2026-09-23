@@ -951,8 +951,7 @@ export class 界面 {
           链接.click();
           发布("提示", { 文本: 配置.文案.截图成功 });
           发布("截图");
-        } catch (错误) {
-          console.warn("截图合成失败", 错误);
+        } catch {
           发布("提示", { 文本: 配置.文案.截图失败 });
         }
       };
@@ -1963,7 +1962,13 @@ export class 界面 {
   /* ── 加载 ───────────────────────────── */
 
   设置进度(比例, 说明) {
-    this.元素.加载条.style.width = `${Math.round(比例 * 100)}%`;
+    const 数值 = Number(比例);
+    if (!Number.isFinite(数值)) return;
+    if (!this.元素.加载条) return;
+    const 已发 = Number(this.元素.加载条.dataset.已发 || "0");
+    const 下一 = Math.max(Number.isFinite(已发) ? 已发 : 0, Math.min(1, 数值));
+    this.元素.加载条.dataset.已发 = String(下一);
+    this.元素.加载条.style.width = `${Math.round(下一 * 100)}%`;
     if (说明) this.元素.加载文字.textContent = 说明;
   }
 

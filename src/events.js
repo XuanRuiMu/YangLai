@@ -16,8 +16,12 @@ export function 发布(名, 负载) {
   for (const 回调 of [...监听者]) {
     try {
       回调(负载);
-    } catch (错误) {
-      console.error(`事件「${名}」监听者抛错`, 错误);
+    } catch {
+      try {
+        const 探针 = document.querySelector("#验收探针");
+        if (探针) 探针.dataset.事件错误 = String(名 || "");
+      } catch {
+      }
     }
   }
 }

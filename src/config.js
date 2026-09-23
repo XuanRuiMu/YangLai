@@ -6,6 +6,9 @@ export const 配置 = {
     // 用 ASCII 路径是为了避免中文路径在部分静态托管上被编码后 404
     候选路径: ["model/model.glb"],
     低模路径: "model/model-lite.glb",
+    主模型权重: 0.85,
+    部件模型权重: 0.15,
+    进度取整: true,
     资源: {
       清单路径: "model/model-manifest.json",
       镜像源: [],

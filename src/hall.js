@@ -53,8 +53,7 @@ export class 直播厅 {
     if (!this.频道 || this.已销毁) return;
     try {
       this.频道.postMessage({ ...负载, 来自: this.标签号, 时间: Date.now() });
-    } catch (错误) {
-      console.warn("直播厅广播失败", 错误);
+    } catch {
     }
   }
 

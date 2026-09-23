@@ -223,9 +223,12 @@ async function 启动() {
 
   try {
     await 模型.加载((比例, 路径) => {
-      const 百分比 = Math.round(比例 * 100);
-      const 显示 = 路径.includes("MB") ? 路径 : 路径.split("/").pop();
-      界面.设置进度(比例, `${百分比}% · ${显示}`);
+      const 数值 = Number(比例);
+      if (!Number.isFinite(数值)) return;
+      const 说明 = typeof 路径 === "string" && 路径 ? 路径 : 配置.文案.加载就位;
+      const 百分比 = Math.round(Math.min(1, Math.max(0, 数值)) * 100);
+      const 显示 = 说明.includes("MB") ? 说明 : 说明.split("/").pop();
+      界面.设置进度(数值, `${百分比}% · ${显示}`);
     });
     就绪 = true;
     界面.设置进度(1, 配置.文案.加载就位);
@@ -238,7 +241,6 @@ async function 启动() {
     setTimeout(() => 界面.提示(配置.文案.道具提示), 2600);
     setTimeout(() => 界面.提示(配置.文案.彩蛋提示), 5200);
   } catch (错误) {
-    console.error(错误);
     界面.加载失败(String(错误?.message || 错误));
   }
 
@@ -294,7 +296,6 @@ async function 启动() {
 }
 
 启动().catch((错误) => {
-  console.error("启动失败", 错误);
   const 遮罩 = document.querySelector("#loading");
   if (遮罩) {
     遮罩.classList.remove("hidden");

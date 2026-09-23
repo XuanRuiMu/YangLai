@@ -168,8 +168,7 @@ class 语音系统 {
       const 声 = this.选中文声();
       if (声) 句.voice = 声;
       合成.speak(句);
-    } catch (错误) {
-      console.warn("语音合成跳过", 错误);
+    } catch {
     }
   }
 

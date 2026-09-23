@@ -28,6 +28,59 @@ function 同步验收探针(模型) {
   }
 }
 
+class 加载状态机 {
+  constructor(上报, 取权重) {
+    this.上报 = 上报;
+    this.取权重 = 取权重;
+    this.主进度 = 0;
+    this.部件进度 = 0;
+    this.已发 = 0;
+    this.说明 = "";
+    this.完工 = false;
+  }
+  报主(比例, 说明) {
+    if (this.完工) return;
+    const 数值 = Number(比例);
+    if (!Number.isFinite(数值)) return;
+    this.主进度 = 夹取(数值, 0, 1);
+    if (说明) this.说明 = 说明;
+    this.推();
+  }
+  报部件(比例, 说明) {
+    if (this.完工) return;
+    const 数值 = Number(比例);
+    if (!Number.isFinite(数值)) return;
+    this.部件进度 = 夹取(数值, 0, 1);
+    if (说明) this.说明 = 说明;
+    this.推();
+  }
+  推() {
+    const { 主权重, 部件权重, 取整 } = this.取权重();
+    const 合计 = this.主进度 * 主权重 + this.部件进度 * 部件权重;
+    const 值 = 取整 ? Math.round(合计 * 100) / 100 : 合计;
+    const 单调 = Math.max(this.已发, 夹取(值, 0, 0.99));
+    if (单调 <= this.已发) return;
+    this.已发 = 单调;
+    this.上报(this.已发, this.说明);
+  }
+  收尾(说明) {
+    if (this.完工) return;
+    this.完工 = true;
+    this.已发 = 1;
+    this.上报(1, 说明);
+  }
+}
+
+function 读进度权重() {
+  const 主权重 = Number(配置.模型?.主模型权重);
+  const 部件权重 = Number(配置.模型?.部件模型权重);
+  const 主 = Number.isFinite(主权重) && 主权重 >= 0 && 主权重 <= 1 ? 主权重 : 0.85;
+  const 部 = Number.isFinite(部件权重) && 部件权重 >= 0 && 部件权重 <= 1 ? 部件权重 : 0.15;
+  const 和 = 主 + 部;
+  const 归一主 = 和 > 0 ? 主 / 和 : 1;
+  return { 主权重: 归一主, 部件权重: 和 > 0 ? 部 / 和 : 0, 取整: 配置.模型?.进度取整 !== false };
+}
+
 export class 模型管理 {
   constructor(舞台) {
     this.舞台 = 舞台;
@@ -73,34 +126,36 @@ export class 模型管理 {
   }
 
   async 加载(进度回调) {
+    const 验回调 = typeof 进度回调 === "function" ? 进度回调 : () => {};
     const 路径承诺 = 收集模型路径();
-    const 部件承诺 = this.排队加载部件(进度回调);
+    const 状态机 = new 加载状态机(
+      (比例, 说明) => 验回调(比例, 说明),
+      读进度权重
+    );
+    const 部件承诺 = this.排队加载部件((比例, 说明) => 状态机.报部件(比例, 说明));
     const 路径列表 = await 路径承诺;
-    const 进度包装 = this.部件就绪
-      ? 进度回调
-      : (比例, 说明) => 进度回调?.(Math.min(0.99, 比例 * 0.9), 说明);
+    const 主上报 = (比例, 说明) => 状态机.报主(比例, 说明);
     for (const 路径 of 路径列表) {
       for (let 尝试 = 0; 尝试 < 3; 尝试++) {
         try {
-          const 结果 = await 载入模型(路径, this.读加载器(), 进度包装);
+          const 结果 = await 载入模型(路径, this.读加载器(), 主上报);
           this.装配(结果.scene);
-          进度回调?.(1, 配置.文案.加载就位);
+          状态机.报主(1, 配置.文案.加载就位);
           await 部件承诺;
+          状态机.收尾(配置.文案.加载就位);
           return { 路径, 场景: 结果.scene };
-        } catch (错误) {
-          console.warn(`模型加载失败：${路径}（第${尝试 + 1}次）`, 错误);
+        } catch {
           if (尝试 < 2) await new Promise((r) => setTimeout(r, 500));
         }
       }
     }
-    console.warn("所有模型路径均失败，使用 fallback 胶囊体");
     this.装配(this.造fallback());
     return { 路径: "fallback", 场景: this.模型 };
   }
 
-  排队加载部件(进度回调) {
+  排队加载部件(上报部件) {
     if (this.部件就绪 || this.部件加载中) return this.部件加载中;
-    const 启动 = () => this.加载部件(进度回调);
+    const 启动 = () => this.加载部件(上报部件);
     this.部件加载中 = new Promise((完成) => {
       const 踢 = () => 启动().then(完成, 完成);
       if (typeof requestIdleCallback === "function") {
@@ -118,10 +173,10 @@ export class 模型管理 {
     return this.部件加载中.then(() => this.部件就绪);
   }
 
-  async 加载部件(进度回调) {
+  async 加载部件(上报部件) {
     const 路径 = 配置.动作.部件路径;
     try {
-      const 结果 = await 载入模型(路径, this.读加载器(), (比例, 说明) => 进度回调?.(比例, `动作模型 ${说明}`));
+      const 结果 = await 载入模型(路径, this.读加载器(), (比例, 说明) => 上报部件?.(比例, `动作模型 ${说明}`));
       const 场景 = 结果.scene;
       this.容器.add(场景);
       场景.visible = false;
@@ -149,8 +204,7 @@ export class 模型管理 {
         this.待播动作 = null;
         this.播放动作(待播);
       }
-    } catch (错误) {
-      console.warn("动作模型加载失败，动作功能不可用：", 路径, 错误);
+    } catch {
       this.动作系统 = null;
       this.部件模型 = null;
       this.部件就绪 = false;
