@@ -22,10 +22,8 @@ import { 绑定埋点 } from "./埋点.js";
 import { 拉取内容 } from "./内容.js";
 import { 绑定全局错误, 应用主题, 当前主题, 当前省电 } from "./治理.js";
 import { 订阅, 发布 } from "./events.js";
-import { 迁移旧存储键 } from "./存储迁移.js";
 
 async function 启动() {
-  迁移旧存储键();
   标注舞台语义();
   try {
     document.documentElement.style.setProperty("--字体栈", 配置.字体.栈);
