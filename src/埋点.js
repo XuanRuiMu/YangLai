@@ -1,5 +1,5 @@
-import { 配置 } from "./config.js";
-import { 发布, 订阅 } from "./events.js";
+import { 配置 } from "./配置.js";
+import { 发布, 订阅 } from "./事件.js";
 
 function 读表() {
   try {

@@ -1,4 +1,4 @@
-# YangLai · 阳来
+# YangLai · 羊来
 
 > The interactive livestream stage for the 2026 animated film *YangLai* — a full 3D host you can admire, poke, and prank: double-tap to like, drag props onto him, spam danmaku, and watch him rage.
 
@@ -25,7 +25,7 @@
 
 ## What is this?
 
-*YangLai* is a 2026 animated film whose star is a sun streamer who loves to cause trouble. This project is its **promotional livestream room**: a 3D interactive prank stage running in your browser — the host stands right in front of you. Double-tap to like, drag props onto him, spam danmaku, fill his anger bar and watch the "rage splat".
+*YangLai* is a 2026 animated film whose star is a yang streamer who loves to cause trouble. This project is its **promotional livestream room**: a 3D interactive prank stage running in your browser — the host stands right in front of you. Double-tap to like, drag props onto him, spam danmaku, fill his anger bar and watch the "rage splat".
 
 Everything is **atmosphere performance**: popularity is simulated, the online count is derived, gifts cost nothing, and the model won't actually get hurt (probably).
 
@@ -40,11 +40,11 @@ Everything is **atmosphere performance**: popularity is simulated, the online co
 
 | Feature | Description |
 | --- | --- |
-| 🌞 3D host | Drag to rotate 360°, scroll to zoom, right-drag to pan; switch lighting / camera / auto-rotate |
+| 🐑 3D host | Drag to rotate 360°, scroll to zoom, right-drag to pan; switch lighting / camera / auto-rotate |
 | ❤️ Double-tap like | Double-tap anywhere on the model to pop like icons; chain taps trigger combos |
 | 🎁 Prank props | Drag from the dock onto the model: roses are "gifts", tomatoes & eggs are "throws" |
 | 😡 Rage splat | Max out the anger bar and the host throws a tantrum — right in your face |
-| 💬 Danmaku | Keywords like "阳来", "下雨" (rain), "蹦迪" (disco), "反转" (flip) trigger easter eggs |
+| 💬 Danmaku | Keywords like "羊来", "下雨" (rain), "蹦迪" (disco), "反转" (flip) trigger easter eggs |
 | ☄️ Prop barrage | Rain down justice from above; 🧽 one-click clean of all splats |
 | 🍅 Tomato rain | Toss 10 tomatoes within 30 seconds to trigger a full-screen tomato rain |
 | 🕺 Disco mode | Lights + music + color strobes, the host dances along |
@@ -64,9 +64,9 @@ Everything is **atmosphere performance**: popularity is simulated, the online co
 | Build | [Vite](https://vite.dev/) (ES2020, gzip, three.js in a separate chunk) |
 | 3D rendering | [Three.js](https://threejs.org/) + custom GLB pipeline (split rig / lite model) |
 | Language | Vanilla JavaScript (zero framework) |
-| PWA | Hand-rolled Service Worker (`tools/inject_sw.cjs`), manifest, offline cache |
+| PWA | Hand-rolled Service Worker (`tools/注入离线缓存.cjs`), manifest, offline cache |
 | Deploy | GitHub Actions → GitHub Pages (`.github/workflows/deploy-pages.yml`) |
-| Testing | Vitest + Playwright (`tools/verify.cjs`) |
+| Testing | Vitest + Playwright (`tools/自检.cjs`) |
 
 ### Engineering details worth reading
 
@@ -95,7 +95,7 @@ npm run build
 npm run preview
 ```
 
-> Note: models are compressed for Pages hosting (idle 2.6 MB / lite 1.3 MB / action 1.1 MB, ~5 MB total; rerun with `npm run 模型:压主页`). The repo keeps only the optimized production models in `public/model/`. The dev entry `index.html` sits at the repo root.
+> Note: package name `yanglai-stage` is the npm-compliant ASCII form (lowercase, no hyphen variant); the repo name `YangLai` and the Chinese brand name stay unchanged. Models are compressed for Pages hosting (idle 2.6 MB / lite 1.3 MB / action 1.1 MB, ~5 MB total; rerun with `npm run 模型:压主页`). The repo keeps only the optimized production models in `public/model/`; the model source is `模型/吴昊阳模型原版.glb` (large local file, git-ignored). The dev entry `index.html` sits at the repo root.
 
 ---
 
@@ -107,25 +107,25 @@ YangLai/
 ├── vite.config.js        # Vite config (three.js split, gzip, plugin chain)
 ├── package.json          # Scripts & deps (only runtime dep is three.js)
 ├── src/                  # All source (modular vanilla JS)
-│   ├── main.js           # Bootstrap: assembles stage/model/particles/danmaku/UI…
-│   ├── stage.js          # 3D stage rendering
-│   ├── model.js          # Model loading & switching
-│   ├── props.js          # Prop system (drag & throw onto the model)
-│   ├── danmu.js          # Danmaku / keyword easter eggs
-│   ├── likes.js          # Double-tap likes & combos
-│   ├── achv.js           # Achievements
-│   ├── pranks.js         # Rage / splat / tomato rain / disco effects
-│   ├── hall.js           # Livestream hall (online count / popularity / gift rank)
-│   ├── pins.js decals.js # Pins / splat decals
-│   ├── poster.js         # Battle-report poster
-│   ├── speech.js audio.js# Voice lines
-│   └── …                 # state / UI / analytics / PWA / a11y
+│   ├── 主入口.js          # Bootstrap: assembles stage/model/particles/danmaku/UI…
+│   ├── 舞台.js            # 3D stage rendering
+│   ├── 模型.js            # Model loading & switching
+│   ├── 道具.js            # Prop system (drag & throw onto the model)
+│   ├── 弹幕.js            # Danmaku / keyword easter eggs
+│   ├── 点赞.js            # Double-tap likes & combos
+│   ├── 成就.js            # Achievements
+│   ├── 恶搞.js            # Rage / splat / tomato rain / disco effects
+│   ├── 大厅.js            # Livestream hall (online count / popularity / gift rank)
+│   ├── 标注.js 污渍.js    # Pins / splat decals
+│   ├── 战报.js            # Battle-report poster
+│   ├── 语音.js 音频.js     # Voice lines
+│   └── …                 # 状态 / 界面 / 埋点 / 离线应用 / 无障碍
 ├── public/               # Static assets
 │   ├── content/          # achievements / danmaku / prizes / lines / notices (JSON)
-│   ├── model/            # production GLB models (full / split / lite)
+│   ├── model/            # production GLB models (模型/吴昊阳模型原版.glb → optimized intermediates → public/model)
 │   ├── audio/vo/         # baked voice lines
 │   └── icons/            # PWA icons & screenshots
-├── tools/                # build-time scripts (model/icon/voice/budget/verify)
+├── tools/                # build-time scripts (模型/图标/语音/预算/验证)
 ├── docs/                 # test reports (low-end devices, fonts & emoji)
 ├── CHANGELOG.md          # Version history
 └── LICENSE               # License
@@ -136,16 +136,16 @@ YangLai/
 ## Tests & verification
 
 ```bash
-npm run 验证        # toolchain self-check (verify.cjs)
+npm run 验证        # toolchain self-check (自检.cjs)
 npm run 预算        # payload budget check
-npm run audit:check # dependency security audit
+npm run 依赖审计 # dependency security audit
 ```
 
 ---
 
 ## Links
 
-- 🌞 [Live stage](https://xuanruimu.github.io/YangLai/)
+- 🐑 [Live stage](https://xuanruimu.github.io/YangLai/)
 - 📖 [Changelog](CHANGELOG.md) ｜ [Privacy](public/privacy.html) ｜ [Terms](public/terms.html)
 - 🎬 The animated film *YangLai* — coming soon
 

@@ -1,4 +1,4 @@
-import { 配置 } from "./config.js";
+import { 配置 } from "./配置.js";
 
 const 键 = (名) => `${配置.内容.目录}/${名}.json`;
 

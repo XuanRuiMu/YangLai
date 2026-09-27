@@ -7,9 +7,8 @@ tools/_tts_*.txt
 .env
 .DS_Store
 Thumbs.db
-模型/武哲锋.glb
-模型/武哲锋正面.png
-模型/武哲锋背面.png
+模型/武哲锋*.glb
+模型/武哲锋*.png
 
 # 大体量 3D 模型（>50MB）不入版本库，仅保留本地
 模型/吴昊阳*.glb

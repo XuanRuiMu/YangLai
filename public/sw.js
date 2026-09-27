@@ -1,10 +1,10 @@
-/* 阳来 · Service Worker
+/* 羊来 · Service Worker
  * 策略：
  *  - 导航请求：网络优先，失败才回退缓存（保证重新部署后能拿到新版）
  *  - 其它同源 GET：先给缓存再后台更新（stale-while-revalidate）
  *  - 明确跳过：sw.js 自身、非 GET、跨域、以及体积巨大的模型文件
  *  - 音频片段走独立缓存并设数量+体积上限，超限按写入顺序淘汰最旧
- * 构建脚本 tools/inject_sw.cjs 会把下方的 __壳资源__ 占位替换为 dist 产物清单（含 hashed assets）。
+ * 构建脚本 tools/注入离线缓存.cjs 会把下方的 __壳资源__ 占位替换为 dist 产物清单（含 hashed assets）。
  */
 const 版本 = "阳来-壳-v2";
 const 壳资源 = __壳资源__;

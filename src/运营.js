@@ -1,5 +1,5 @@
-import { 配置 } from "./config.js";
-import { 净化文本 } from "./utils.js";
+import { 配置 } from "./配置.js";
+import { 净化文本 } from "./工具.js";
 
 function 读黑名单() {
   try {

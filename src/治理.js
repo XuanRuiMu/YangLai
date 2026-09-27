@@ -1,5 +1,5 @@
-import { 配置 } from "./config.js";
-import { 发布 } from "./events.js";
+import { 配置 } from "./配置.js";
+import { 发布 } from "./事件.js";
 
 function 读存(键, 回退) {
   try {

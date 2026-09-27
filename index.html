@@ -6,248 +6,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="theme-color" content="#120d18" />
     <meta name="description" content="全方面 3D 展示主播，双击点赞、拖拽道具砸他、弹幕刷屏的无厘头整蛊舞台。双击点赞、拖道具整蛊、弹幕刷屏——开整！" />
-    <meta name="keywords" content="阳来,直播间,整蛊舞台,点赞,弹幕,战报" />
+    <meta name="keywords" content="羊来,直播间,整蛊舞台,点赞,弹幕,战报" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
-    <meta property="og:site_name" content="阳来直播间" />
-    <meta property="og:title" content="2026年动画电影《阳来》宣传直播间" />
+    <meta property="og:site_name" content="羊来直播间" />
+    <meta property="og:title" content="2026年动画电影《羊来》宣传直播间" />
     <meta property="og:description" content="全方面 3D 展示主播，双击点赞、拖拽道具砸他、弹幕刷屏的无厘头整蛊舞台。双击点赞、拖道具整蛊、弹幕刷屏——开整！" />
     <meta property="og:image" content="./icons/icon-512.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="2026年动画电影《阳来》宣传直播间" />
+    <meta name="twitter:title" content="2026年动画电影《羊来》宣传直播间" />
     <meta name="twitter:description" content="全方面 3D 展示主播，双击点赞、拖拽道具砸他、弹幕刷屏的无厘头整蛊舞台。双击点赞、拖道具整蛊、弹幕刷屏——开整！" />
     <meta name="twitter:image" content="./icons/icon-512.png" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"阳来直播间","applicationCategory":"EntertainmentApplication","operatingSystem":"Web","inLanguage":"zh-CN","description":"全方面 3D 展示主播，双击点赞、拖拽道具砸他、弹幕刷屏的无厘头整蛊舞台。","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script>
-    <title>2026年动画电影《阳来》宣传直播间</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"羊来直播间","applicationCategory":"EntertainmentApplication","operatingSystem":"Web","inLanguage":"zh-CN","description":"全方面 3D 展示主播，双击点赞、拖拽道具砸他、弹幕刷屏的无厘头整蛊舞台。","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script>
+    <title>2026年动画电影《羊来》宣传直播间</title>
     <!-- 部署域名以用户 Pages 为准，此处仅声明相对规范地址，禁止硬编码猜测域名 -->
     <link rel="canonical" href="index.html" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./icons/icon-192.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="阳来" />
+    <meta name="apple-mobile-web-app-title" content="羊来" />
   </head>
   <body>
-    <noscript><div class="降级提示">阳来直播间需要启用 JavaScript 才能把主播搬上舞台。</div></noscript>
-    <a class="跳过链接" href="#controls">跳到控制栏</a>
-    <a class="跳过链接 跳过链接2" href="#dock" style="left:150px">跳到道具栏</a>
-    <div id="app">
-      <canvas id="stage" role="img"></canvas>
+    <noscript><div class="降级提示">羊来直播间需要启用 JavaScript 才能把主播搬上舞台。</div></noscript>
+    <a class="跳过链接" href="#控制栏">跳到控制栏</a>
+    <a class="跳过链接 跳过链接2" href="#道具栏" style="left:150px">跳到道具栏</a>
+    <div id="应用">
+      <canvas id="舞台" role="img"></canvas>
 
       <!-- 弹幕层 -->
-      <div id="danmu-layer" class="layer" aria-hidden="true"></div>
+      <div id="弹幕层" class="层" aria-hidden="true"></div>
 
       <!-- 吐槽标注层 -->
-      <div id="pin-layer" class="layer" aria-hidden="true"></div>
+      <div id="标注层" class="层" aria-hidden="true"></div>
 
       <!-- 点赞图标漂浮层 -->
-      <div id="float-layer" class="layer" aria-hidden="true"></div>
+      <div id="漂浮层" class="层" aria-hidden="true"></div>
 
       <!-- 暴怒闪屏 -->
-      <div id="rage-flash" class="rage-flash" aria-hidden="true"></div>
+      <div id="暴怒闪屏" class="暴怒闪屏" aria-hidden="true"></div>
 
       <!-- 蹦迪模式的彩色频闪 -->
-      <div id="disco-flash" class="disco-flash" aria-hidden="true"></div>
+      <div id="蹦迪闪屏" class="蹦迪闪屏" aria-hidden="true"></div>
 
       <!-- 主播の反击：糊屏 -->
-      <div id="splat-layer" class="splat-layer" aria-hidden="true"></div>
+      <div id="糊屏层" class="糊屏层" aria-hidden="true"></div>
 
       <!-- 顶部信息条 -->
-      <header id="topbar" class="panel-glass">
+      <header id="顶栏" class="玻璃板">
         <div class="brand">
-          <span class="brand-sun" id="brand-sun" title="据说连点七下有惊喜">🌞</span>
+          <span class="brand-yang" id="brand-yang" title="据说连点七下有惊喜">🐑</span>
           <div class="brand-text">
-            <strong>阳来直播间</strong>
-            <small>主播 · 2026年动画电影《阳来》宣传直播间</small>
+            <strong>羊来直播间</strong>
+            <small>主播 · 2026年动画电影《羊来》宣传直播间</small>
           </div>
         </div>
-        <div class="topbar-mid">
-          <span class="live-dot"></span>
-          <span id="online-count" title="在线数为演出基数+抖动+点赞折算，非真实在线">1,024</span> 人正在围观（演出人数，非真实在线）
-          <span class="sep">·</span>
-          你在场 <b id="stay-time">0:00</b>
+        <div class="顶栏中">
+          <span class="直播点"></span>
+          <span id="在线数" title="在线数为演出基数+抖动+点赞折算，非真实在线">1,024</span> 人正在围观（演出人数，非真实在线）
+          <span class="分隔">·</span>
+          你在场 <b id="停留">0:00</b>
         </div>
-        <div class="topbar-right">
-          <div id="popularity-wrap" class="chip chip-hot" title="人气是气氛演出，不代表真实在线">
-            <span class="chip-icon">🔥</span>
-            <b id="popularity">86</b>
+        <div class="顶栏右">
+          <div id="人气区" class="徽标 热徽标" title="人气是气氛演出，不代表真实在线">
+            <span class="徽标图">🔥</span>
+            <b id="人气">86</b>
             <em>人气</em>
           </div>
-          <div id="tab-count-wrap" class="chip" title="同一个浏览器开了几个标签">
-            <span class="chip-icon">🧩</span>
-            <b id="tab-count">1</b>
+          <div id="标签区" class="徽标" title="同一个浏览器开了几个标签">
+            <span class="徽标图">🧩</span>
+            <b id="标签数">1</b>
             <em>屏</em>
           </div>
-          <button id="follow-btn" class="ctrl-btn follow-btn" type="button" title="关注主播">＋ 关注</button>
-          <button id="nick-btn" class="nick-btn" type="button" title="点击改个名号">路人甲</button>
-          <div id="title-badge" class="title-badge">路人甲</div>
+          <button id="关注钮" class="控制钮 关注钮" type="button" title="关注主播">＋ 关注</button>
+          <button id="昵称钮" class="昵称钮" type="button" title="点击改个名号">路人甲</button>
+          <div id="称号" class="称号">路人甲</div>
         </div>
       </header>
 
       <!-- 公告条 -->
-      <div id="marquee" class="marquee" aria-hidden="true"><span id="marquee-text"></span></div>
+      <div id="公告条" class="公告条" aria-hidden="true"><span id="公告文"></span></div>
 
       <!-- 左侧状态面板 -->
-      <section id="stat-panel" class="panel-glass">
-        <div class="stat-row">
-          <span class="stat-label">好感度</span>
-          <span id="favor-value" class="stat-value">0</span>
+      <section id="状态面板" class="玻璃板">
+        <div class="状态行">
+          <span class="状态标">好感度</span>
+          <span id="好感值" class="状态值">0</span>
         </div>
-        <div class="bar favor"><i id="favor-bar"></i></div>
-        <div class="stat-row">
-          <span class="stat-label">愤怒值</span>
-          <span id="anger-value" class="stat-value">0</span>
+        <div class="进度条 好感"><i id="好感条"></i></div>
+        <div class="状态行">
+          <span class="状态标">愤怒值</span>
+          <span id="愤怒值" class="状态值">0</span>
         </div>
-        <div class="bar anger"><i id="anger-bar"></i></div>
-        <div class="stat-grid">
-          <div><b id="like-count">0</b><span>获赞</span></div>
-          <div><b id="combo-count">0</b><span>连击</span></div>
-          <div><b id="throw-count">0</b><span>投掷</span></div>
+        <div class="进度条 愤怒"><i id="愤怒条"></i></div>
+        <div class="状态格">
+          <div><b id="获赞数">0</b><span>获赞</span></div>
+          <div><b id="连击数">0</b><span>连击</span></div>
+          <div><b id="投掷数">0</b><span>投掷</span></div>
         </div>
-        <div class="stat-medals">
-          <span class="medals-label">成就</span>
-          <span id="medal-count">0/0</span>
+        <div class="成就区">
+          <span class="成就标">成就</span>
+          <span id="成就数">0/0</span>
         </div>
         <!-- 热度榜 -->
-        <div id="gift-rank-wrap">
-          <div id="gift-rank-title" class="rank-title"></div>
-          <div id="gift-rank" class="gift-rank"></div>
+        <div id="榜单区">
+          <div id="榜单题" class="榜单题"></div>
+          <div id="榜单" class="榜单"></div>
         </div>
       </section>
 
       <!-- 右侧控制栏 -->
-      <aside id="controls" class="panel-glass">
-        <button class="ctrl" data-act="light" title="切换灯光">💡<em>灯光</em></button>
-        <button class="ctrl" data-act="camera" title="切换机位">🎥<em>机位</em></button>
-        <button class="ctrl" data-act="spin" title="自动旋转">🔄<em>转</em></button>
-        <button class="ctrl" data-act="sound" title="声音开关"><span>🔊</span><em>声音</em></button>
-        <button class="ctrl" data-act="bomb" title="道具轰炸">☄️<em>轰炸</em></button>
-        <button class="ctrl" data-act="clean" title="一键清洗">🧽<em>清洗</em></button>
-        <button class="ctrl" data-act="shot" title="截图留念">📸<em>截图</em></button>
-        <button class="ctrl" data-act="disco" title="蹦迪模式">🕺<em>蹦迪</em></button>
-        <button class="ctrl" data-act="voice" title="模型台词语音">🗣️<em>台词</em></button>
-        <button class="ctrl" data-act="poster" title="生成战报海报">📜<em>战报</em></button>
-        <button class="ctrl" data-act="actions" title="动作栏：让主播走跑跳">🎭<em>动作</em></button>
-        <button class="ctrl" data-act="help" title="玩法说明">❓<em>玩法</em></button>
+      <aside id="控制栏" class="玻璃板">
+        <button class="控制" data-act="light" title="切换灯光">💡<em>灯光</em></button>
+        <button class="控制" data-act="camera" title="切换机位">🎥<em>机位</em></button>
+        <button class="控制" data-act="spin" title="自动旋转">🔄<em>转</em></button>
+        <button class="控制" data-act="sound" title="声音开关"><span>🔊</span><em>声音</em></button>
+        <button class="控制" data-act="bomb" title="道具轰炸">☄️<em>轰炸</em></button>
+        <button class="控制" data-act="clean" title="一键清洗">🧽<em>清洗</em></button>
+        <button class="控制" data-act="shot" title="截图留念">📸<em>截图</em></button>
+        <button class="控制" data-act="disco" title="蹦迪模式">🕺<em>蹦迪</em></button>
+        <button class="控制" data-act="voice" title="模型台词语音">🗣️<em>台词</em></button>
+        <button class="控制" data-act="poster" title="生成战报海报">📜<em>战报</em></button>
+        <button class="控制" data-act="actions" title="动作栏：让主播走跑跳">🎭<em>动作</em></button>
+        <button class="控制" data-act="help" title="玩法说明">❓<em>玩法</em></button>
       </aside>
 
       <!-- 动作面板：平时用上色模型，做动作时切到未上色分割模型 -->
-      <aside id="action-panel" class="panel-glass hidden">
-        <div class="action-head">
-          <span class="action-title">🎭 动作栏</span>
-          <button id="action-close" class="action-close" type="button" title="收起">✕</button>
+      <aside id="动作面板" class="玻璃板 隐藏">
+        <div class="动作头">
+          <span class="动作题">🎭 动作栏</span>
+          <button id="动作关" class="动作关" type="button" title="收起">✕</button>
         </div>
-        <div id="action-list" class="action-list"></div>
+        <div id="动作列表" class="动作列表"></div>
       </aside>
 
       <!-- 道具栏 -->
-      <footer id="dock" class="panel-glass">
-        <div id="prop-tabs" class="prop-tabs"></div>
-        <div id="prop-list" class="prop-list"></div>
-        <div class="dock-hint">按住道具拖到模型上松手 · 双击模型任意位置点赞</div>
+      <footer id="道具栏" class="玻璃板">
+        <div id="道具页签" class="道具页签"></div>
+        <div id="道具列表" class="道具列表"></div>
+        <div class="道具栏提示">按住道具拖到模型上松手 · 双击模型任意位置点赞</div>
       </footer>
 
       <!-- 顶部台词气泡 -->
-      <div id="speech-bubble" class="speech-bubble"></div>
+      <div id="台词气泡" class="台词气泡"></div>
 
       <!-- 幸运观众横幅 -->
-      <div id="lottery" class="lottery"><span id="lottery-text"></span></div>
+      <div id="幸运观众" class="幸运观众"><span id="幸运文"></span></div>
 
       <!-- 飘字 / 提示 -->
-      <div id="toast-layer" class="toast-layer" role="status" aria-live="polite"></div>
+      <div id="提示层" class="提示层" role="status" aria-live="polite"></div>
 
       <!-- 连击数字 -->
-      <div id="combo-pop" class="combo-pop"></div>
+      <div id="连击弹" class="连击弹"></div>
 
       <!-- 观众进场提示 -->
-      <div id="entry-layer" class="entry-layer" aria-hidden="true"></div>
+      <div id="进场层" class="进场层" aria-hidden="true"></div>
 
       <!-- 送礼提示条 -->
-      <div id="gift-layer" class="gift-layer" aria-hidden="true"></div>
+      <div id="礼物层" class="礼物层" aria-hidden="true"></div>
 
       <!-- 新手引导 -->
-      <div id="新手引导" class="mask hidden" data-新手="1" role="dialog" aria-modal="true" aria-labelledby="新手引导标题">
-        <div class="nick-card panel-glass">
-          <h2 id="新手引导标题">🌞 三步开整</h2>
-          <p id="新手引导步骤" class="nick-tip"></p>
-          <div class="nick-actions">
-            <button id="新手引导跳过" class="ghost-btn" type="button">跳过</button>
-            <button id="新手引导下一步" class="primary-btn" type="button">下一步</button>
+      <div id="新手引导" class="遮罩 隐藏" data-新手="1" role="dialog" aria-modal="true" aria-labelledby="新手引导标题">
+        <div class="取名卡 玻璃板">
+          <h2 id="新手引导标题">🐑 三步开整</h2>
+          <p id="新手引导步骤" class="取名提示"></p>
+          <div class="取名钮组">
+            <button id="新手引导跳过" class="幽灵钮" type="button">跳过</button>
+            <button id="新手引导下一步" class="主钮" type="button">下一步</button>
           </div>
         </div>
       </div>
 
       <!-- 帮助面板（默认收起，点右上角 ❓ 打开） -->
-      <div id="help-mask" class="mask hidden" role="dialog" aria-modal="true" aria-labelledby="help-title">
-        <div class="help-card panel-glass">
-          <h2 id="help-title">🌞 阳来整蛊舞台 · 玩法说明</h2>
-          <ul id="help-list">
+      <div id="帮助罩" class="遮罩 隐藏" role="dialog" aria-modal="true" aria-labelledby="帮助题">
+        <div class="帮助卡 玻璃板">
+          <h2 id="帮助题">🐑 羊来整蛊舞台 · 玩法说明</h2>
+          <ul id="帮助列表">
             <li><b>看模型</b>：左键拖动可 360° 旋转，滚轮缩放，右键平移。</li>
             <li><b>点赞</b>：双击模型任意位置，点赞图标会飘起来，连续双击触发连击。</li>
             <li><b>送道具</b>：从下方道具栏按住拖到模型身上松手；玫瑰是「献上」，西红柿鸡蛋是「砸过去」。</li>
             <li><b>暴怒</b>：把愤怒值刷满，主播会当场发飙，然后糊你一脸。</li>
-            <li><b>弹幕</b>：底部输入框发弹幕；发「阳来」「下雨」「蹦迪」「反转」这类口令有彩蛋。</li>
+            <li><b>弹幕</b>：底部输入框发弹幕；发「羊来」「下雨」「蹦迪」「反转」这类口令有彩蛋。</li>
             <li><b>轰炸</b>：点右侧 ☄️ 来一波天降正义；🧽 一键清洗所有污渍。</li>
             <li><b>番茄雨</b>：30 秒内扔够 10 个西红柿，全场天降西红柿。</li>
-            <li id="help-互通"><b>多标签</b>：同浏览器多标签互通——同一个浏览器开两个标签，弹幕和点赞会实时互通。</li>
-            <li id="help-榜单规则"><b>榜单规则</b>：本场热度榜只记本场送礼演出数，整蛊投掷不进榜。</li>
-            <li id="help-抽奖规则"><b>抽奖规则</b>：幸运观众定时抽取，发言/点赞即自动入围；奖品为气氛演出，无实际奖励。</li>
-            <li id="help-品牌"><b>品牌故事</b>：阳来是一只爱折腾的太阳主播，舞台让给观众，互动全是气氛演出。</li>
+            <li id="帮助互通"><b>多标签</b>：同浏览器多标签互通——同一个浏览器开两个标签，弹幕和点赞会实时互通。</li>
+            <li id="帮助榜单规则"><b>榜单规则</b>：本场热度榜只记本场送礼演出数，整蛊投掷不进榜。</li>
+            <li id="帮助抽奖规则"><b>抽奖规则</b>：幸运观众定时抽取，发言/点赞即自动入围；奖品为气氛演出，无实际奖励。</li>
+            <li id="帮助品牌"><b>品牌故事</b>：羊来是一只爱折腾的太羊主播，舞台让给观众，互动全是气氛演出。</li>
           </ul>
-          <p class="help-tip">提示：所有内容纯属娱乐，模型本体不会受伤（大概）。人气值为气氛演出，不是真实在线人数。在线数为演出基数+抖动+点赞折算，非真实在线。送礼=气氛演出，无实际支付。</p>
-          <p class="help-privacy">隐私说明：昵称、战绩、成就、弹幕偏好仅保存在本机浏览器 localStorage，不上传服务器；清浏览器数据即删除。</p>
-          <p id="help-存档行" class="help-tip"></p>
-          <div id="help-运营区"></div>
-          <div class="medal-wall">
-            <div class="medals-label">已解锁成就 <b id="medal-count-help">0/0</b></div>
-            <div id="medal-list" class="medal-list"></div>
+          <p class="帮助提示">提示：所有内容纯属娱乐，模型本体不会受伤（大概）。人气值为气氛演出，不是真实在线人数。在线数为演出基数+抖动+点赞折算，非真实在线。送礼=气氛演出，无实际支付。</p>
+          <p class="帮助隐私">隐私说明：昵称、战绩、成就、弹幕偏好仅保存在本机浏览器 localStorage，不上传服务器；清浏览器数据即删除。</p>
+          <p id="帮助存档行" class="帮助提示"></p>
+          <div id="帮助运营区"></div>
+          <div class="成就墙板">
+            <div class="成就标">已解锁成就 <b id="帮助成就数">0/0</b></div>
+            <div id="成就墙" class="成就墙"></div>
           </div>
-          <div id="help-埋点区"></div>
-          <button id="help-close" class="primary-btn">知道了，开整！</button>
-          <p id="help-页脚" class="help-tip"></p>
+          <div id="帮助埋点区"></div>
+          <button id="帮助关" class="主钮">知道了，开整！</button>
+          <p id="帮助页脚" class="帮助提示"></p>
         </div>
       </div>
 
       <!-- 离线横幅 -->
-      <div id="offline-banner" class="offline-banner" role="status" hidden></div>
-      <button id="重建舞台" class="ghost-btn" type="button" hidden>重建舞台</button>
+      <div id="离线横幅" class="离线横幅" role="status" hidden></div>
+      <button id="重建舞台" class="幽灵钮" type="button" hidden>重建舞台</button>
 
       <!-- 取名卡 -->
-      <div id="nick-mask" class="mask hidden" role="dialog" aria-modal="true" aria-labelledby="nick-title">
-        <div class="nick-card panel-glass">
-          <div class="nick-sun">🌞</div>
-          <h2 id="nick-title">进直播间先报个名号</h2>
-          <p id="nick-tip" class="nick-tip">取个响亮的外号，弹幕上就能看出是你说的</p>
-          <input id="nick-input" type="text" maxlength="12" placeholder="例如：路过的甲鱼" autocomplete="off" />
-          <p id="nick-error" class="nick-error"></p>
-          <div class="nick-actions">
-            <button id="nick-skip" class="ghost-btn" type="button">随便来一个</button>
-            <button id="nick-ok" class="primary-btn" type="button">就这个！</button>
+      <div id="取名罩" class="遮罩 隐藏" role="dialog" aria-modal="true" aria-labelledby="取名题">
+        <div class="取名卡 玻璃板">
+          <div class="nick-yang">🐑</div>
+          <h2 id="取名题">进直播间先报个名号</h2>
+          <p id="取名提示" class="取名提示">取个响亮的外号，弹幕上就能看出是你说的</p>
+          <input id="取名框" type="text" maxlength="12" placeholder="例如：路过的甲鱼" autocomplete="off" />
+          <p id="取名错" class="取名错"></p>
+          <div class="取名钮组">
+            <button id="取名跳" class="幽灵钮" type="button">随便来一个</button>
+            <button id="取名定" class="主钮" type="button">就这个！</button>
           </div>
-          <p class="nick-note">昵称只存在你自己的浏览器里，不会上传。昵称、战绩、成就、弹幕偏好仅保存在本机浏览器 localStorage，不上传服务器；清浏览器数据即删除。</p>
+          <p class="取名注">昵称只存在你自己的浏览器里，不会上传。昵称、战绩、成就、弹幕偏好仅保存在本机浏览器 localStorage，不上传服务器；清浏览器数据即删除。</p>
         </div>
       </div>
 
       <!-- 弹幕输入 -->
-      <div id="danmu-input-bar" class="panel-glass">
-        <div id="danmu-emoji-bar" class="danmu-emoji-bar" aria-hidden="true"></div>
-        <input id="danmu-input" type="text" maxlength="40" placeholder="发条弹幕刷个存在感…" autocomplete="off" />
-        <button id="danmu-send" class="primary-btn small">发送</button>
-        <button id="danmu-send-hot" class="primary-btn small hot-btn">⚡高能</button>
+      <div id="弹幕栏" class="玻璃板">
+        <div id="表情栏" class="表情栏" aria-hidden="true"></div>
+        <input id="弹幕框" type="text" maxlength="40" placeholder="发条弹幕刷个存在感…" autocomplete="off" />
+        <button id="弹幕发" class="主钮 小钮">发送</button>
+        <button id="弹幕高能" class="主钮 小钮 高能钮">⚡高能</button>
       </div>
 
       <!-- 加载遮罩 -->
-      <div id="loading" class="mask loading">
-        <div class="loading-inner">
-          <div class="loading-sun">🌞</div>
-          <div class="loading-title">阳来 · 正在把主播搬上舞台</div>
-          <div class="loading-bar"><i id="loading-bar"></i></div>
-          <div id="loading-text" class="loading-text">准备中…</div>
+      <div id="加载罩" class="遮罩 加载">
+        <div class="加载内">
+          <div class="loading-yang">🐑</div>
+          <div class="加载题">羊来 · 正在把主播搬上舞台</div>
+          <div class="加载条"><i id="加载条"></i></div>
+          <div id="加载文" class="加载文">准备中…</div>
           <p class="loading-降级">若此页长期停留：请确认已启用 JavaScript 并使用支持 WebGL 的浏览器打开。</p>
         </div>
       </div>
     </div>
 
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/主入口.js"></script>
   </body>
 </html>
